@@ -6,6 +6,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "-march=native")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
 
+# Eigenのinclude
+include_directories(/usr/include/eigen3)
+
 # ソース
 file(GLOB SRCS ./*.cc)
 
