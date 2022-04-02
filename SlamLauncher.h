@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "MapDrawer.h"
-#include "PointCloudMap.h"
+#include "PointCloudMapBS.h"
 #include "SensorDataReader.h"
 
 class SlamLauncher {
@@ -19,7 +19,7 @@ class SlamLauncher {
   Pose2D lidarOffset;  // レーザスキャナとロボットの相対位置
 
   SensorDataReader sreader;  // ファイルからのセンサデータ読み込み
-  PointCloudMap pcmap;       // 点群地図
+  PointCloudMapBS pcmap;     // 点群地図
   MapDrawer mdrawer;         // gnuplotによる描画
 
   // SlamFrontEnd sfront;          // SLAMフロントエンド
