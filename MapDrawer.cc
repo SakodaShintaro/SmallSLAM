@@ -26,6 +26,10 @@ void MapDrawer::drawTrajectoryGp(const vector<Pose2D> &poses) {
 }
 
 void MapDrawer::drawGp(const vector<LPoint2D> &lps, const vector<Pose2D> &poses, bool flush) {
+  static int id = 0;
+  id++;
+  gp = fopen(("result" + std::to_string(id) + ".txt").c_str(), "w");
+
   printf("drawGp: lps.size=%lu\n", lps.size());  // 点数の確認用
 
   // gnuplot設定
