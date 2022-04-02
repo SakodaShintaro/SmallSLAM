@@ -123,7 +123,7 @@ void SlamLauncher::showScans() {
 
 //////// スキャン読み込み /////////
 
-bool SlamLauncher::setFilename(char *filename) {
+bool SlamLauncher::setFilename(const std::string &filename) {
   bool flag = sreader.openScanFile(filename);  // ファイルをオープン
 
   return (flag);

@@ -14,7 +14,7 @@ class SensorDataReader {
  public:
   SensorDataReader() : angleOffset(180) {}
 
-  bool openScanFile(const char *filepath) {
+  bool openScanFile(const std::string& filepath) {
     inFile.open(filepath);
     if (!inFile.is_open()) {
       std::cerr << "Error: cannot open file " << filepath << std::endl;

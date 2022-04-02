@@ -35,9 +35,8 @@ class SlamLauncher {
   void run();
   void showScans();
   void mapByOdometry(Scan2D *scan);
-  bool setFilename(char *filename);
+  bool setFilename(const std::string &filename);
   void skipData(int num);
-  void customizeFramework();
 };
 
 #endif
