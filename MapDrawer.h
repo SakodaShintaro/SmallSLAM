@@ -26,7 +26,8 @@ class MapDrawer {
   ~MapDrawer() { finishGnuplot(); }
 
   void initGnuplot() {
-    gp = popen("gnuplot", "w");  // パイプオープン.Linux
+    // gp = popen("gnuplot", "w");  // パイプオープン.Linux
+    gp = fopen("result.txt", "w");
   }
 
   void finishGnuplot() {

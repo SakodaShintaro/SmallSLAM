@@ -33,7 +33,7 @@ void SlamLauncher::run() {
     double t1 = 1000 * tim.elapsed();
 
     if (cnt % drawSkip == 0) {  // drawSkipおきに結果を描画
-      mdrawer.drawMapGp(*pcmap);
+      mdrawer.drawMapGp(pcmap);
     }
     double t2 = 1000 * tim.elapsed();
 
@@ -84,9 +84,9 @@ void SlamLauncher::mapByOdometry(Scan2D *scan) {
   }
 
   // 点群地図pcmapにデータを格納
-  pcmap->addPose(pose);
-  pcmap->addPoints(glps);
-  pcmap->makeGlobalMap();
+  pcmap.addPose(pose);
+  pcmap.addPoints(glps);
+  pcmap.makeGlobalMap();
 
   printf("Odom pose: tx=%g, ty=%g, th=%g\n", pose.tx, pose.ty, pose.th);
 }

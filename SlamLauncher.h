@@ -19,14 +19,14 @@ class SlamLauncher {
   Pose2D lidarOffset;  // レーザスキャナとロボットの相対位置
 
   SensorDataReader sreader;  // ファイルからのセンサデータ読み込み
-  PointCloudMap *pcmap;      // 点群地図
+  PointCloudMap pcmap;       // 点群地図
   MapDrawer mdrawer;         // gnuplotによる描画
 
   // SlamFrontEnd sfront;          // SLAMフロントエンド
   // FrameworkCustomizer fcustom;  // フレームワークの改造
 
  public:
-  SlamLauncher() : startN(0), drawSkip(10), odometryOnly(false), pcmap(nullptr) {}
+  SlamLauncher() : startN(0), drawSkip(10), odometryOnly(false) {}
 
   void setStartN(int n) { startN = n; }
 
