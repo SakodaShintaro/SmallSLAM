@@ -52,11 +52,6 @@ void SlamLauncher::run() {
   printf("Elapsed time: mapping=%g, drawing=%g, reading=%g\n", (totalTime - totalTimeDraw - totalTimeRead),
          totalTimeDraw, totalTimeRead);
   printf("SlamLauncher finished.\n");
-
-  // 処理終了後も描画画面を残すためにsleepで無限ループにする。ctrl-Cで終了。
-  while (true) {
-    usleep(1000000);  // Linuxではusleep
-  }
 }
 
 // 開始からnum個のスキャンまで読み飛ばす
