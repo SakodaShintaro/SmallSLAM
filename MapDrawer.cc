@@ -28,14 +28,16 @@ void MapDrawer::drawTrajectoryGp(const vector<Pose2D> &poses) {
 void MapDrawer::drawGp(const vector<LPoint2D> &lps, const vector<Pose2D> &poses, bool flush) {
   static int id = 0;
   id++;
-  gp = fopen(("result" + std::to_string(id) + ".txt").c_str(), "w");
+  const std::string id_str = std::to_string(id);
+  gp = fopen(("result" + id_str + ".txt").c_str(), "w");
 
   printf("drawGp: lps.size=%lu\n", lps.size());  // 点数の確認用
 
   // gnuplot設定
   fprintf(gp, "set term png\n");
-  fprintf(gp, ("set output \"sample-" + std::to_string(id) + ".png\"\n").c_str());
-  //  fprintf(gp, "plot '-' w p pt 7 ps 0.1, '-' with vector\n");
+
+  const std::string output_str = "set output \"sample-" + id_str + ".png\"\n";
+  fprintf(gp, "%s", output_str.c_str());
   fprintf(gp, "plot '-' w p pt 7 ps 0.1 lc rgb 0x0, '-' with vector\n");
 
   // 点群の描画
