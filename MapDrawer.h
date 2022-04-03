@@ -18,25 +18,19 @@ class MapDrawer {
   double xmax;
   double ymin;
   double ymax;
-  double aspectR;  // xy比
+  double aspectR_;  // xy比
 
  public:
-  MapDrawer() : gp(nullptr), xmin(-10), xmax(10), ymin(-10), ymax(10), aspectR(-1.0) {}
+  MapDrawer() : gp(nullptr), xmin(-10), xmax(10), ymin(-10), ymax(10), aspectR_(-1.0) {}
 
   ~MapDrawer() { finishGnuplot(); }
-
-  void initGnuplot() {
-    // gp = popen("gnuplot", "w");  // パイプオープン.Linux
-    gp = fopen("result.txt", "w");
-  }
 
   void finishGnuplot() {
     if (gp != nullptr) pclose(gp);
   }
 
   void setAspectRatio(double a) {
-    aspectR = a;
-    fprintf(gp, "set size ratio %lf\n", aspectR);
+    aspectR_ = a;
   }
 
   void setRange(double R) {  // 描画範囲をR四方にする
