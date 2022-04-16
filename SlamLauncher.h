@@ -5,9 +5,11 @@
 
 #include <vector>
 
+#include "FrameworkCustomizer.h"
 #include "MapDrawer.h"
 #include "PointCloudMapBS.h"
 #include "SensorDataReader.h"
+#include "SlamFrontEnd.h"
 
 class SlamLauncher {
  private:
@@ -22,8 +24,8 @@ class SlamLauncher {
   PointCloudMapBS pcmap;     // 点群地図
   MapDrawer mdrawer;         // gnuplotによる描画
 
-  // SlamFrontEnd sfront;          // SLAMフロントエンド
-  // FrameworkCustomizer fcustom;  // フレームワークの改造
+  SlamFrontEnd sfront;          // SLAMフロントエンド
+  FrameworkCustomizer fcustom;  // フレームワークの改造
 
  public:
   SlamLauncher() : startN(0), drawSkip(10), odometryOnly(false) {}

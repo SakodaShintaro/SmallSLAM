@@ -15,14 +15,16 @@ int main() {
   // ファイルを開く
   SlamLauncher sl;
   bool flag = sl.setFilename(filename);
-  if (!flag) return (1);
+  if (!flag) {
+    return 1;
+  }
 
   sl.setStartN(startN);  // 開始スキャン番号の設定
 
   // 処理本体
-  if (scanCheck)
+  if (scanCheck) {
     sl.showScans();
-  else {  // スキャン表示以外はSlamLauncher内で場合分け
+  } else {  // スキャン表示以外はSlamLauncher内で場合分け
     sl.setOdometryOnly(odometryOnly);
     sl.run();
   }

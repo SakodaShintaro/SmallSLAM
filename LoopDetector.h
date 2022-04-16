@@ -49,7 +49,7 @@ class LoopDetector {
 
   void setPoseGraph(PoseGraph *p) { pg = p; }
 
-  virtual bool detectLoop(Scan2D *curScan, Pose2D &curPose, int cnt) = 0;
+  virtual bool detectLoop(Scan2D *curScan, Pose2D &curPose, int cnt);
 };
 
 #endif
