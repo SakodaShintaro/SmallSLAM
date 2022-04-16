@@ -21,7 +21,7 @@ class SlamLauncher {
   Pose2D lidarOffset;  // レーザスキャナとロボットの相対位置
 
   SensorDataReader sreader;  // ファイルからのセンサデータ読み込み
-  PointCloudMapBS pcmap;     // 点群地図
+  PointCloudMap *pcmap;      // 点群地図
   MapDrawer mdrawer;         // gnuplotによる描画
 
   SlamFrontEnd sfront;          // SLAMフロントエンド
@@ -39,6 +39,7 @@ class SlamLauncher {
   void mapByOdometry(Scan2D *scan);
   bool setFilename(const std::string &filename);
   void skipData(int num);
+  void customizeFramework();
 };
 
 #endif

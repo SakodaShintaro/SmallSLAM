@@ -5,7 +5,7 @@
 int main() {
   std::cout << "Small SLAM" << std::endl;
   const bool scanCheck = false;                               // スキャン表示のみか
-  const bool odometryOnly = true;                             // オドメトリによる地図構築か
+  const bool odometryOnly = false;                            // オドメトリによる地図構築か
   const std::string filename = "../../dataset/corridor.lsc";  // データファイル名
   int startN = 0;                                             // 開始スキャン番号
 
@@ -26,6 +26,7 @@ int main() {
     sl.showScans();
   } else {  // スキャン表示以外はSlamLauncher内で場合分け
     sl.setOdometryOnly(odometryOnly);
+    sl.customizeFramework();
     sl.run();
   }
 }

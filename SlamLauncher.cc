@@ -25,14 +25,13 @@ void SlamLauncher::run() {
       }
       mapByOdometry(&scan);
     } else {
-      std::exit(1);
-      // sfront.process(scan);  // SLAMによる地図構築
+      sfront.process(scan);  // SLAMによる地図構築
     }
 
     double t1 = 1000 * tim.elapsed();
 
     if (cnt % drawSkip == 0) {  // drawSkipおきに結果を描画
-      mdrawer.drawMapGp(pcmap);
+      mdrawer.drawMapGp(*pcmap);
     }
     double t2 = 1000 * tim.elapsed();
 
@@ -78,9 +77,9 @@ void SlamLauncher::mapByOdometry(Scan2D *scan) {
   }
 
   // 点群地図pcmapにデータを格納
-  pcmap.addPose(pose);
-  pcmap.addPoints(glps);
-  pcmap.makeGlobalMap();
+  pcmap->addPose(pose);
+  pcmap->addPoints(glps);
+  pcmap->makeGlobalMap();
 
   printf("Odom pose: tx=%g, ty=%g, th=%g\n", pose.tx, pose.ty, pose.th);
 }
@@ -120,4 +119,12 @@ bool SlamLauncher::setFilename(const std::string &filename) {
   bool flag = sreader.openScanFile(filename);  // ファイルをオープン
 
   return (flag);
+}
+
+void SlamLauncher::customizeFramework() {
+  fcustom.setSlamFrontEnd(&sfront);
+  fcustom.makeFramework();
+  fcustom.customizeI();
+
+  pcmap = fcustom.getPointCloudMap();  // customizeの後にやること
 }
